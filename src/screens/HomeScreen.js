@@ -12,6 +12,7 @@ import { Entypo } from '@expo/vector-icons';
 
 // components
 import Category from '../components/CategoryCard';
+import ItemCard from '../components/ItemCard';
 
 const Home = () => {
     return (
@@ -29,11 +30,16 @@ const Home = () => {
                 <View style={styles.subContainer2}>
                     <Category />
                     <Category />
+                    <Category />
+                    <Category />
                 </View>
 
             </View>
             <View style={styles.subContainer3}>
-
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
             </View>
 
         </View>
@@ -59,19 +65,19 @@ const styles = StyleSheet.create({
         backgroundColor: theme.colors.secondary,
         padding: '1%',
         borderRadius: 10,
-        marginHorizontal: '4%',
+        marginHorizontal: '5%',
         marginBottom:'3%'
     },
 
     subContainer2: {
         padding: '2%',
         height: windowHeight * 0.15,
-        marginLeft: '4%',
+        marginLeft: '3%',
         flexDirection:'row'
     },
 
     subContainer3:{
-        marginHorizontal: '4%',
+        marginHorizontal: '5%',
     },
 
 })

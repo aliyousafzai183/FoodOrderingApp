@@ -5,6 +5,8 @@ const theme = {
         top: '#FCF8F5',
         background: '#FFFFFF',
         text: 'black',
+        description: '#666',
+        buttonTitle: '#FFFFFF'
     },
     fontSizes: {
         small: 12,
