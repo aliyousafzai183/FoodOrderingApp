@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, FlatList } from 'react-native';
+import { Text, View, FlatList, TouchableOpacity } from 'react-native';
 
 // styles
 import { StyleSheet, Dimensions } from 'react-native';
@@ -20,12 +20,12 @@ const Home = () => {
 
             <View style={styles.categoryWrapper}>
 
-                <View style={styles.subContainer1}>
-                    <Text>
+                <TouchableOpacity style={styles.subContainer1}>
+                    <Text style={styles.locationText}>
                         29 Hola Street, California, USA
                     </Text>
                     <Entypo name="location-pin" size={24} color="black" />
-                </View>
+                </TouchableOpacity>
 
                 <View style={styles.subContainer2}>
                     <Category />
@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     categoryWrapper:{
         backgroundColor:theme.colors.top,
         flexDirection:'column',
+        marginBottom:'2%'
     },
 
     subContainer1: {
@@ -66,19 +67,25 @@ const styles = StyleSheet.create({
         padding: '1%',
         borderRadius: 10,
         marginHorizontal: '5%',
-        marginBottom:'3%'
+        marginBottom:'3%',
+        paddingHorizontal:10
     },
 
     subContainer2: {
         padding: '2%',
         height: windowHeight * 0.15,
         marginLeft: '3%',
-        flexDirection:'row'
+        flexDirection:'row',
     },
 
     subContainer3:{
         marginHorizontal: '5%',
     },
+
+    locationText:{
+        color: theme.colors.primary,
+        fontWeight:'bold'
+    }
 
 })
 

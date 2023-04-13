@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import theme from '../themeProvider/theme';
+
 
 const Category = () => {
   return (
-    <View style={styles.card}>
+    <TouchableOpacity style={styles.card}>
       <View style={styles.imageContainer}>
       <Image
         source={{ uri: 'https://images.pexels.com/photos/2147491/pexels-photo-2147491.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' }}
@@ -11,7 +13,7 @@ const Category = () => {
       />
       </View>
       <Text style={styles.title}>Pizza</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
