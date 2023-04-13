@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import theme from '../themeProvider/theme';
 
 
-const Category = () => {
+const Category = ({title}) => {
   return (
     <TouchableOpacity style={styles.card}>
       <View style={styles.imageContainer}>
@@ -12,7 +12,7 @@ const Category = () => {
         style={styles.image}
       />
       </View>
-      <Text style={styles.title}>Pizza</Text>
+      <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
   );
 };

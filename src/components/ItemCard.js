@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import theme from '../themeProvider/theme';
 
-const ItemCard = () => {
+const ItemCard = ({title, description, price}) => {
   return (
     <TouchableOpacity style={styles.card}>
       <View style={styles.imageContainer}>
@@ -13,11 +13,11 @@ const ItemCard = () => {
       </View>
       <View style={styles.detailsContainer}>
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>Title</Text>
-          <Text style={styles.description}>Sure, here's an example of how you could create a card:</Text>
+          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.description}>{description}</Text>
         </View>
         <View style={styles.priceContainer}>
-          <Text style={styles.price}>$9.99</Text>
+          <Text style={styles.price}>${price}</Text>
           <TouchableOpacity style={styles.button}>
             <Text style={styles.buttonText}>+ Add</Text>
           </TouchableOpacity>
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: theme.colors.background,
+    // backgroundColor: theme.colors.background,
     borderRadius: 10,
     paddingRight: 20,
     marginVertical:10

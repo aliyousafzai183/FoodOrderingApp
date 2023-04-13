@@ -1,5 +1,5 @@
-import React from 'react';
-import { Text, View, FlatList, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, FlatList, TouchableOpacity, Modal } from 'react-native';
 
 // styles
 import { StyleSheet, Dimensions } from 'react-native';
@@ -13,14 +13,28 @@ import { Entypo } from '@expo/vector-icons';
 // components
 import Category from '../components/CategoryCard';
 import ItemCard from '../components/ItemCard';
+import ItemModal from '../components/ItemModal';
 
 const Home = () => {
+    const [modalVisible, setModalVisible] = useState(false);
+
+    const handleOpenModal = () => {
+        setModalVisible(true);
+    };
+
+    const handleCloseModal = () => {
+        setModalVisible(false);
+    };
+
     return (
         <View style={styles.container}>
 
             <View style={styles.categoryWrapper}>
 
-                <TouchableOpacity style={styles.subContainer1}>
+                <TouchableOpacity
+                    style={styles.subContainer1}
+                    onPress={handleOpenModal}
+                >
                     <Text style={styles.locationText}>
                         29 Hola Street, California, USA
                     </Text>
@@ -28,19 +42,29 @@ const Home = () => {
                 </TouchableOpacity>
 
                 <View style={styles.subContainer2}>
-                    <Category />
-                    <Category />
-                    <Category />
-                    <Category />
+                    <Category title="Pizza"/>
+                    <Category title="Pizza"/>
+                    <Category title="Pizza"/>
+                    <Category title="Pizza"/>
+                    <Category title="Pizza"/>
                 </View>
 
             </View>
             <View style={styles.subContainer3}>
-                <ItemCard />
-                <ItemCard />
-                <ItemCard />
-                <ItemCard />
+                <ItemCard title={"Paperoni Pizza"} description={"Sure, here's an example of how you could create a card:"} price={"9.99"}/>
+                <ItemCard title={"Paperoni Pizza"} description={"Sure, here's an example of how you could create a card:"} price={"9.99"}/>
+                <ItemCard title={"Paperoni Pizza"} description={"Sure, here's an example of how you could create a card:"} price={"9.99"}/>
+                <ItemCard title={"Paperoni Pizza"} description={"Sure, here's an example of how you could create a card:"} price={"9.99"}/>
             </View>
+
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={handleCloseModal}
+            >
+               <ItemModal setModalVisible={setModalVisible}/>
+            </Modal>
 
         </View>
     )
@@ -53,11 +77,11 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'flex-start'
     },
-    
-    categoryWrapper:{
-        backgroundColor:theme.colors.top,
-        flexDirection:'column',
-        marginBottom:'2%'
+
+    categoryWrapper: {
+        backgroundColor: theme.colors.top,
+        flexDirection: 'column',
+        marginBottom: '2%'
     },
 
     subContainer1: {
@@ -67,25 +91,25 @@ const styles = StyleSheet.create({
         padding: '1%',
         borderRadius: 10,
         marginHorizontal: '5%',
-        marginBottom:'3%',
-        paddingHorizontal:10
+        marginBottom: '3%',
+        paddingHorizontal: 10
     },
 
     subContainer2: {
         padding: '2%',
         height: windowHeight * 0.15,
         marginLeft: '3%',
-        flexDirection:'row',
+        flexDirection: 'row',
     },
 
-    subContainer3:{
+    subContainer3: {
         marginHorizontal: '5%',
     },
 
-    locationText:{
+    locationText: {
         color: theme.colors.primary,
-        fontWeight:'bold'
-    }
+        fontWeight: 'bold'
+    },
 
 })
 

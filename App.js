@@ -38,8 +38,8 @@ function App() {
           ),
           headerRight: () => (
             <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Delivery</Text>
-              <MaterialIcons name="arrow-drop-down" size={24} color={theme.colors.primary} />
+              <Text style={styles.buttonText}>DELIVERY</Text>
+              <MaterialIcons name="arrow-drop-down" size={20} color={theme.colors.primary} />
             </TouchableOpacity>
           ),
         }}
@@ -52,7 +52,6 @@ function App() {
 
 const styles = StyleSheet.create({
   logoContainer: {
-    marginLeft: 10,
     flexDirection:'row',
     alignItems:'center',
   },
@@ -61,6 +60,7 @@ const styles = StyleSheet.create({
     height: 25,
     borderTopRightRadius:100,
     borderBottomRightRadius:100,
+    marginRight:'5%'
   },
   title: {
     fontSize: 20,
@@ -71,11 +71,13 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderRadius: 5,
-    flexDirection:'row'
+    flexDirection:'row',
+    alignItems:'center'
   },
   buttonText: {
     color: theme.colors.primary,
     fontWeight: 'bold',
+    fontSize:12
   },
 });
 
