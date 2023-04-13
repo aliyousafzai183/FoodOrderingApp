@@ -2,9 +2,9 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import theme from '../themeProvider/theme';
 
-const ItemCard = ({title, description, price}) => {
+const ItemCard = ({title, description, price, setModalVisible}) => {
   return (
-    <TouchableOpacity style={styles.card}>
+    <TouchableOpacity style={styles.card} onPress={()=>setModalVisible(true)}>
       <View style={styles.imageContainer}>
         <Image
         source={{ uri: 'https://images.pexels.com/photos/2147491/pexels-photo-2147491.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' }}
@@ -31,19 +31,23 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
     alignItems: 'center',
-    // backgroundColor: theme.colors.background,
+    backgroundColor: theme.colors.top,
     borderRadius: 10,
     paddingRight: 20,
-    marginVertical:10
+    marginVertical:10,
   },
+
   imageContainer: {
     width: '33%',
     marginRight: 20,
   },
+
   image: {
     width: '100%',
     aspectRatio: 1,
     borderRadius: 10,
+    borderTopRightRadius:50,
+    borderBottomRightRadius:50
   },
   detailsContainer: {
     flex: 1,

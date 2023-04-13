@@ -15,6 +15,9 @@ import Category from '../components/CategoryCard';
 import ItemCard from '../components/ItemCard';
 import ItemModal from '../components/ItemModal';
 
+// data
+import { Items, Categories } from '../model/data';
+
 const Home = () => {
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -33,7 +36,6 @@ const Home = () => {
 
                 <TouchableOpacity
                     style={styles.subContainer1}
-                    onPress={handleOpenModal}
                 >
                     <Text style={styles.locationText}>
                         29 Hola Street, California, USA
@@ -42,19 +44,30 @@ const Home = () => {
                 </TouchableOpacity>
 
                 <View style={styles.subContainer2}>
-                    <Category title="Pizza"/>
-                    <Category title="Pizza"/>
-                    <Category title="Pizza"/>
-                    <Category title="Pizza"/>
-                    <Category title="Pizza"/>
+                    <FlatList
+                        data={Categories}
+                        renderItem={({ item, index }) => (
+                            <Category title={item.title} />
+                        )}
+                        
+                        keyExtractor={(item) => item.id.toString()}
+                        horizontal={true}
+                        showsHorizontalScrollIndicator={false}
+                    />
                 </View>
 
             </View>
+            
             <View style={styles.subContainer3}>
-                <ItemCard title={"Paperoni Pizza"} description={"Sure, here's an example of how you could create a card:"} price={"9.99"}/>
-                <ItemCard title={"Paperoni Pizza"} description={"Sure, here's an example of how you could create a card:"} price={"9.99"}/>
-                <ItemCard title={"Paperoni Pizza"} description={"Sure, here's an example of how you could create a card:"} price={"9.99"}/>
-                <ItemCard title={"Paperoni Pizza"} description={"Sure, here's an example of how you could create a card:"} price={"9.99"}/>
+                <FlatList
+                        data={Items}
+                        renderItem={({ item, index }) => (
+                            <ItemCard title={item.title} description={item.description} price={item.price} setModalVisible={setModalVisible} />
+                            )}
+                        
+                        keyExtractor={(item) => item.id.toString()}
+                        // showsVerticalScrollIndicator={false}
+                    />
             </View>
 
             <Modal
@@ -63,7 +76,7 @@ const Home = () => {
                 visible={modalVisible}
                 onRequestClose={handleCloseModal}
             >
-               <ItemModal setModalVisible={setModalVisible}/>
+                <ItemModal setModalVisible={setModalVisible} />
             </Modal>
 
         </View>
@@ -75,13 +88,14 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: theme.colors.background,
         flexDirection: 'column',
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
     },
 
     categoryWrapper: {
         backgroundColor: theme.colors.top,
         flexDirection: 'column',
-        marginBottom: '2%'
+        marginBottom: '2%',
+        paddingBottom: 20
     },
 
     subContainer1: {
@@ -99,11 +113,11 @@ const styles = StyleSheet.create({
         padding: '2%',
         height: windowHeight * 0.15,
         marginLeft: '3%',
-        flexDirection: 'row',
     },
 
     subContainer3: {
         marginHorizontal: '5%',
+        marginBottom:'50%'
     },
 
     locationText: {
