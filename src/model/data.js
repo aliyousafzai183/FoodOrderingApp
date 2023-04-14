@@ -3,37 +3,44 @@ const Items = [
         id:1,
         title:'Paperoni Pizza',
         description: 'Sure It will be as good as possible',
-        price:9.99
+        price:9.99,
+        category:'Pizza',
     },
     {
         id:2,
         title:'Paperoni Burger',
         description: 'Sure It will be as good as possible',
-        price:9.99
+        price:9.99,
+        category:'Burger',
     },
     {
         id:3,
         title:'Paperoni Light',
         description: 'Sure It will be as good as possible',
-        price:9.99
+        price:9.99,
+        category:'Light',
     },
     {
         id:4,
-        title:'Paperoni haha',
+        title:'Paperoni Shuwarma',
         description: 'Sure It will be as good as possible',
-        price:9.99
+        price:9.99,
+        Category:'Shuwarma'
     },
     {
         id:5,
-        title:'Paperoni haha',
+        title:'Paperoni Pizza',
         description: 'Sure It will be as good as possible',
-        price:9.99
+        price:9.99,
+        category:'Pizza',
+
     },
     {
         id:6,
-        title:'Paperoni haha',
+        title:'Paperoni burger',
         description: 'Sure It will be as good as possible',
-        price:9.99
+        price:9.99,
+        category:'burger'
     },
 ];
 

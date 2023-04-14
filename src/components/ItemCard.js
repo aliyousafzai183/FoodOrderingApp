@@ -1,14 +1,35 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import React, {useState} from 'react';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Modal } from 'react-native';
 import theme from '../themeProvider/theme';
 
-const ItemCard = ({title, description, price, setModalVisible}) => {
+// store
+import { useDispatch } from 'react-redux';
+
+// component
+import ItemModal from './ItemModal';
+
+const ItemCard = ({ title, description, price, id }) => {
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const handleCloseModal = () => {
+    setModalVisible(false);
+  };
+
+  const handlePress = () => {
+    const action = { type: 'SET_DISPLAY_MODAL_FOR', displayModalFor: id };
+    console.log(action);
+    dispatch(action);
+    setModalVisible(true);
+  };
+
   return (
-    <TouchableOpacity style={styles.card} onPress={()=>setModalVisible(true)}>
+    <TouchableOpacity style={styles.card} onPress={handlePress}>
       <View style={styles.imageContainer}>
         <Image
-        source={{ uri: 'https://images.pexels.com/photos/2147491/pexels-photo-2147491.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' }}
-        style={styles.image}
+          source={{ uri: 'https://images.pexels.com/photos/2147491/pexels-photo-2147491.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' }}
+          style={styles.image}
         />
       </View>
       <View style={styles.detailsContainer}>
@@ -23,6 +44,15 @@ const ItemCard = ({title, description, price, setModalVisible}) => {
           </TouchableOpacity>
         </View>
       </View>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={handleCloseModal}
+      >
+        <ItemModal setModalVisible={setModalVisible} title={title}/>
+      </Modal>
     </TouchableOpacity>
   );
 };
@@ -34,7 +64,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.top,
     borderRadius: 10,
     paddingRight: 20,
-    marginVertical:10,
+    marginVertical: 10,
   },
 
   imageContainer: {
@@ -46,8 +76,8 @@ const styles = StyleSheet.create({
     width: '100%',
     aspectRatio: 1,
     borderRadius: 10,
-    borderTopRightRadius:50,
-    borderBottomRightRadius:50
+    borderTopRightRadius: 50,
+    borderBottomRightRadius: 50
   },
   detailsContainer: {
     flex: 1,
@@ -70,7 +100,7 @@ const styles = StyleSheet.create({
   priceContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent:'space-between'
+    justifyContent: 'space-between'
   },
   price: {
     fontSize: 17,
@@ -79,10 +109,10 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: theme.colors.primary,
-    paddingHorizontal:15,
-    paddingVertical:5,
-    borderBottomRightRadius:15,
-    borderTopLeftRadius:15
+    paddingHorizontal: 15,
+    paddingVertical: 5,
+    borderBottomRightRadius: 15,
+    borderTopLeftRadius: 15
   },
   buttonText: {
     color: theme.colors.buttonTitle,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 
 // styles
@@ -13,8 +13,7 @@ import CustomizedRow from './CustomizedRow';
 // icons
 import { Entypo } from '@expo/vector-icons';
 
-const ItemModal = ({ setModalVisible }) => {
-
+const ItemModal = ({ setModalVisible, title }) => {
     const handleCloseModal = () => {
         setModalVisible(false);
     };
@@ -23,7 +22,7 @@ const ItemModal = ({ setModalVisible }) => {
         <View style={styles.modalContainer}>
             <View style={styles.modalContent}>
                 <View style={styles.header}>
-                    <Text style={styles.modalTitle}>Classic Pepperoni</Text>
+                    <Text style={styles.modalTitle}>{title}</Text>
                     <TouchableOpacity
                         onPress={handleCloseModal}
                     >
@@ -36,9 +35,9 @@ const ItemModal = ({ setModalVisible }) => {
                         <Text style={styles.modalText}>Choose Size</Text>
                         <Text style={styles.RequiredText}>Required</Text>
                     </View>
-                    <CustomizedRow title={"Small - 6``"} price={8} border={1}/>
-                    <CustomizedRow title={"Medium - 10``"} price={12} border={1}/>
-                    <CustomizedRow title={"Large - 14``"} price={16} border={0}/>
+                    <CustomizedRow title={"Small - 6``"} price={8} border={1} />
+                    <CustomizedRow title={"Medium - 10``"} price={12} border={1} />
+                    <CustomizedRow title={"Large - 14``"} price={16} border={0} />
                 </View>
 
                 <View style={styles.otherContent}>
@@ -46,9 +45,9 @@ const ItemModal = ({ setModalVisible }) => {
                         <Text style={styles.modalText}>Choose Crust</Text>
                         <Text style={styles.RequiredText}>Required</Text>
                     </View>
-                    <CustomizedRow title={"Classic Hand Tossed"}  border={1}/>
-                    <CustomizedRow title={"Thin Crust"} border={1}/>
-                    <CustomizedRow title={"Cheese Brust"} price={1.50} border={0}/>
+                    <CustomizedRow title={"Classic Hand Tossed"} border={1} />
+                    <CustomizedRow title={"Thin Crust"} border={1} />
+                    <CustomizedRow title={"Cheese Brust"} price={1.50} border={0} />
                 </View>
 
                 <View style={styles.otherContent}>
@@ -56,9 +55,9 @@ const ItemModal = ({ setModalVisible }) => {
                         <Text style={styles.modalText}>Add ons</Text>
                         <Text style={styles.OptionalText}>Optional</Text>
                     </View>
-                    <CustomizedRow title={"Classic Hand Tossed"}  border={1}/>
-                    <CustomizedRow title={"Thin Crust"} border={1}/>
-                    <CustomizedRow title={"Cheese Brust"} price={1.50} border={0}/>
+                    <CustomizedRow title={"Classic Hand Tossed"} border={1} />
+                    <CustomizedRow title={"Thin Crust"} border={1} />
+                    <CustomizedRow title={"Cheese Brust"} price={1.50} border={0} />
                 </View>
 
                 <View style={styles.bottom}>
@@ -86,35 +85,35 @@ const styles = StyleSheet.create({
     modalContent: {
         backgroundColor: theme.colors.background,
         paddingHorizontal: 20,
-        paddingVertical:30,
+        paddingVertical: 30,
         width: '100%',
         flexDirection: 'column',
         justifyContent: 'space-between'
     },
 
-    header:{
+    header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginBottom:'8%',
+        marginBottom: '8%',
     },
-    
-    bottom:{
+
+    bottom: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop:'10%',
-        borderTopWidth:1,
+        marginTop: '10%',
+        borderTopWidth: 1,
         borderColor: 'grey',
-        padding:10,
-        alignItems:'center',
+        padding: 10,
+        alignItems: 'center',
     },
 
     otherContent: {
         flexDirection: 'column',
         justifyContent: 'space-between',
-        marginBottom:'6%'
+        marginBottom: '6%'
     },
 
-    subContent:{
+    subContent: {
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
@@ -151,21 +150,21 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
 
-    button:{
-        backgroundColor:theme.colors.primary,
-        justifyContent:'center',
-        paddingHorizontal:'20%',
-        paddingVertical:'3%',
-        borderRadius:10
+    button: {
+        backgroundColor: theme.colors.primary,
+        justifyContent: 'center',
+        paddingHorizontal: '20%',
+        paddingVertical: '3%',
+        borderRadius: 10
     },
 
-    btnText:{
-        color:theme.colors.background,
-        fontWeight:'bold'
+    btnText: {
+        color: theme.colors.background,
+        fontWeight: 'bold'
     },
 
-    TotalPriceText:{
-        fontWeight:'bold',
+    TotalPriceText: {
+        fontWeight: 'bold',
     }
 
 });
