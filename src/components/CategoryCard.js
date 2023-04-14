@@ -3,28 +3,14 @@ import React, {useState} from 'react-native';
 import theme from '../themeProvider/theme';
 import { log } from 'react-native-reanimated';
 
-// store
-// import { useDispatch, useSelector } from 'react-redux';
-
-const Category = ({ title, Category, id}) => {
-  // const dispatch = useDispatch();
-  // const [category, setCategory] = useState(useSelector(state => state.selectedCategory));
-
-  // const handlePress = () => {
-  //   const action = { type: 'SET_DISPLAY_MODAL_FOR', displayModalFor:id };
-  //   dispatch(action);
-  // };  
+const Category = ({ title, link}) => {
   return (
     <TouchableOpacity
-      // style={Category === "ALL" ? styles.selectedCard : styles.card}
       style={styles.card}
-      // onPress={handlePress}
       >
       <View style={styles.imageContainer}>
-        <Image
-          source={{ uri: 'https://images.pexels.com/photos/2147491/pexels-photo-2147491.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' }}
-          style={styles.image}
-        />
+      <Image source={{ uri: link }} style={styles.image} />
+
       </View>
       <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>

@@ -15,26 +15,20 @@ import Category from '../components/CategoryCard';
 import ItemCard from '../components/ItemCard';
 
 // data
-import { Items, Categories } from '../model/data';
-
-// useSelector
-import { useSelector } from 'react-redux';
+import {fetchData, fetchCategories} from '../model/getData';
 
 const Home = () => {
-  const [allItems, setAllItems] = useState(Items);
-  const [category, setCategory] = useState(useSelector(state => state.selectedCategory));
-  console.log(category);
-  const [filteredItems, setFilteredItems] = useState(allItems);
+  const [data, setData] = useState([]);
+  const [category, setcategory] = useState([]);
 
   useEffect(() => {
-    if (category === 'ALL') {
-      setFilteredItems(allItems);
-    } else {
-      setFilteredItems(allItems.filter((item) => item.category === category));
-    }
-  }, [category, allItems]);
-
-
+    fetchData().then((data) => {
+      setData(data);
+    });
+    fetchCategories().then((data) => {
+      setcategory(data);
+    });
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -48,15 +42,14 @@ const Home = () => {
 
         <View style={styles.subContainer2}>
           <FlatList
-            data={Categories}
+            data={category}
             renderItem={({ item, index }) => (
               <Category
                 title={item.title}
-                category={item.category}
-                id={item.id}
+                link={item.link}
               />
             )}
-            keyExtractor={(item) => item.id.toString()}
+            // keyExtractor={(item) => item.id.toString()}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
           />
@@ -65,16 +58,16 @@ const Home = () => {
 
       <View style={styles.subContainer3}>
         <FlatList
-          data={filteredItems}
+          data={data}
           renderItem={({ item, index }) => (
             <ItemCard
               title={item.title}
               description={item.description}
               price={item.price}
               id={item.id}
+              link={item.link}
             />
           )}
-          keyExtractor={(item) => item.id.toString()}
           showsVerticalScrollIndicator={false}
         />
       </View>

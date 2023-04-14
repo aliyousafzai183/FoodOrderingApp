@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 // component
 import ItemModal from './ItemModal';
 
-const ItemCard = ({ title, description, price, id }) => {
+const ItemCard = ({ title, description, price, id, link }) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const dispatch = useDispatch();
@@ -27,10 +27,8 @@ const ItemCard = ({ title, description, price, id }) => {
   return (
     <TouchableOpacity style={styles.card} onPress={handlePress}>
       <View style={styles.imageContainer}>
-        <Image
-          source={{ uri: 'https://images.pexels.com/photos/2147491/pexels-photo-2147491.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' }}
-          style={styles.image}
-        />
+      <Image source={{ uri: link }} style={styles.image} />
+
       </View>
       <View style={styles.detailsContainer}>
         <View style={styles.titleContainer}>
