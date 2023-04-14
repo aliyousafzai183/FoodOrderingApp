@@ -1,21 +1,25 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import React, {useState} from 'react-native';
 import theme from '../themeProvider/theme';
+import { log } from 'react-native-reanimated';
 
 // store
-import { useDispatch } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 
-const Category = ({ title, category, id}) => {
-  const dispatch = useDispatch();
-  const handlePress = () => {
-    const action = { type: 'SET_DISPLAY_MODAL_FOR', displayModalFor:id };
-    console.log(action);
-    dispatch(action);
-  };  
+const Category = ({ title, Category, id}) => {
+  // const dispatch = useDispatch();
+  // const [category, setCategory] = useState(useSelector(state => state.selectedCategory));
 
+  // const handlePress = () => {
+  //   const action = { type: 'SET_DISPLAY_MODAL_FOR', displayModalFor:id };
+  //   dispatch(action);
+  // };  
   return (
     <TouchableOpacity
-      style={category === category ? styles.selectedCard : styles.card}
-      onPress={handlePress}>
+      // style={Category === "ALL" ? styles.selectedCard : styles.card}
+      style={styles.card}
+      // onPress={handlePress}
+      >
       <View style={styles.imageContainer}>
         <Image
           source={{ uri: 'https://images.pexels.com/photos/2147491/pexels-photo-2147491.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' }}

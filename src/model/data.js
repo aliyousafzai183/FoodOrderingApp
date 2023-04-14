@@ -4,35 +4,35 @@ const Items = [
         title:'Paperoni Pizza',
         description: 'Sure It will be as good as possible',
         price:9.99,
-        category:'Pizza',
+        category:'PIZZA',
     },
     {
         id:2,
         title:'Paperoni Burger',
         description: 'Sure It will be as good as possible',
         price:9.99,
-        category:'Burger',
+        category:'BURGER',
     },
     {
         id:3,
         title:'Paperoni Light',
         description: 'Sure It will be as good as possible',
         price:9.99,
-        category:'Light',
+        category:'LIGHT',
     },
     {
         id:4,
         title:'Paperoni Shuwarma',
         description: 'Sure It will be as good as possible',
         price:9.99,
-        Category:'Shuwarma'
+        Category:'SHUWARMA'
     },
     {
         id:5,
         title:'Paperoni Pizza',
         description: 'Sure It will be as good as possible',
         price:9.99,
-        category:'Pizza',
+        category:'PIZZA',
 
     },
     {
@@ -40,7 +40,7 @@ const Items = [
         title:'Paperoni burger',
         description: 'Sure It will be as good as possible',
         price:9.99,
-        category:'burger'
+        category:'BURGER'
     },
 ];
 
