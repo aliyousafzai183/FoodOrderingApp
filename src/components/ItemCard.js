@@ -2,25 +2,17 @@ import React, {useState} from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, Modal } from 'react-native';
 import theme from '../themeProvider/theme';
 
-// store
-import { useDispatch } from 'react-redux';
-
 // component
 import ItemModal from './ItemModal';
 
 const ItemCard = ({ title, description, price, id, link }) => {
   const [modalVisible, setModalVisible] = useState(false);
 
-  const dispatch = useDispatch();
-
   const handleCloseModal = () => {
     setModalVisible(false);
   };
 
   const handlePress = () => {
-    const action = { type: 'SET_DISPLAY_MODAL_FOR', displayModalFor: id };
-    console.log(action);
-    dispatch(action);
     setModalVisible(true);
   };
 

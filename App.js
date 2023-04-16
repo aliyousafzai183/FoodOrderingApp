@@ -4,9 +4,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 
-// redux
-import { Provider } from 'react-redux';
-import store from './src/redux/store';
 
 // screens
 import HomeScreen from './src/screens/HomeScreen';
@@ -33,7 +30,6 @@ const CustomDrawerContent = (props) => {
 
 function App() {
   return (
-    <Provider store={store}>
     <NavigationContainer>
       <Drawer.Navigator
         screenOptions={{
@@ -75,7 +71,6 @@ function App() {
         <Drawer.Screen name="Home" component={HomeScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
-    </Provider>
   );
 };
 
